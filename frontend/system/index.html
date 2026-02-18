@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ASON // SYSTEM CORE</title>
+    <style>
+        body {
+            background: #050505;
+            color: #ffbd2e;
+            font-family: monospace;
+            padding: 2rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+
+        .core-card {
+            border: 1px solid #333;
+            padding: 1rem;
+            background: #0a0a0a;
+        }
+
+        .core-header {
+            border-bottom: 1px solid #333;
+            padding-bottom: 0.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .load-bar {
+            height: 20px;
+            background: #1a1a1a;
+            width: 100%;
+            position: relative;
+            margin-top: 10px;
+        }
+
+        .load-fill {
+            height: 100%;
+            background: #ffbd2e;
+            width: 0%;
+            transition: width 0.2s;
+        }
+
+        h1 {
+            border-bottom: 2px solid #ffbd2e;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+
+        .terminal {
+            background: #000;
+            padding: 1rem;
+            margin-top: 2rem;
+            border: 1px solid #333;
+            height: 150px;
+            overflow: auto;
+            color: #aaa;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>SYSTEM KERNEL // HARDWARE INTERFACE</h1>
+    <div class="grid" id="cpu-grid">
+        <!-- JS Generated -->
+    </div>
+    <div class="terminal" id="sys-log">
+        > KERNEL_INIT... OK<br>
+        > MOUNTING_DRIVES... OK<br>
+    </div>
+
+    <script>
+        const grid = document.getElementById('cpu-grid');
+        const cores = 16;
+
+        for (let i = 0; i < cores; i++) {
+            const div = document.createElement('div');
+            div.className = 'core-card';
+            div.innerHTML = `
+                <div class="core-header"><span>CORE_${i.toString().padStart(2, '0')}</span><span id="temp-${i}">45°C</span></div>
+                <div>FREQ: 4.2 GHz</div>
+                <div class="load-bar"><div class="load-fill" id="load-${i}"></div></div>
+            `;
+            grid.appendChild(div);
+        }
+
+        setInterval(() => {
+            for (let i = 0; i < cores; i++) {
+                const load = Math.random() * 100;
+                const temp = 40 + (load / 2.5);
+                document.getElementById(`load-${i}`).style.width = load + '%';
+                document.getElementById(`temp-${i}`).innerText = Math.floor(temp) + '°C';
+
+                if (load > 90) document.getElementById(`load-${i}`).style.background = '#ff0000';
+                else document.getElementById(`load-${i}`).style.background = '#ffbd2e';
+            }
+        }, 500);
+
+        const log = document.getElementById('sys-log');
+        setInterval(() => {
+            if (Math.random() > 0.8) {
+                const msgs = ["ALLOCATING_PAGES", "FLUSHING_TLB", "INTERRUPT_HANDLER", "GARBAGE_COLLECTION", "CONTEXT_SWITCH"];
+                const msg = msgs[Math.floor(Math.random() * msgs.length)];
+                log.innerHTML += `> ${msg} [${Date.now()}]<br>`;
+                log.scrollTop = log.scrollHeight;
+            }
+        }, 1000);
+    </script>
+</body>
+
+</html>

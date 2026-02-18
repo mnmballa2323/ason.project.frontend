@@ -1,0 +1,107 @@
+# Task Guidelines
+
+- [x] Create `src/constants.ts` and centralize `INDUSTRIES` data <!-- id: 0 -->
+- [x] Refactor `App.tsx` to use `src/constants.ts` <!-- id: 1 -->
+- [x] Overhaul `Industries.tsx` with "Palantir-style" design <!-- id: 2 -->
+- [x] Implement "Live" Data Simulation <!-- id: 3 -->
+- [x] Add Technical Filter Bar <!-- id: 4 -->
+- [x] Add Abstract Global Map to Header <!-- id: 5 -->
+- [x] Implement "Tactical Detail" Modal <!-- id: 6 -->
+- [x] Add Global Status Ticker (Marquee) <!-- id: 7 -->
+- [x] Add Dynamic Sparklines to Cards <!-- id: 8 -->
+- [x] Implement Theme Toggle (Dark/Light) <!-- id: 9 -->
+- [x] Create `About.tsx` Page <!-- id: 10 -->
+    -   [x] Implement Hero section with mission statement
+    -   [x] Add "Core Architecture" visualization
+    -   [x] Add "Leadership/Team" section (simulated)
+    -   [x] Ensure Theme (Dark/Light) compatibility
+- [x] Update `App.tsx` Navigation <!-- id: 11 -->
+    -   [x] Add "ABOUT" button to header
+    -   [x] Add routing logic for `currentView === 'about'`
+- [x] Enhance Verification Cockpit (User Platform) <!-- id: 12 -->
+    -   [x] Refactor `DecisionGraph.tsx` for theme support
+    -   [x] Refactor `VerificationCockpit.tsx` for theme support & "Palantir" aesthetic
+    -   [x] Update `App.tsx` to pass theme prop
+- [x] Enhance Owner Dashboard (Executive Platform) <!-- id: 13 -->
+    -   [x] Refactor `OwnerDashboard.tsx` for theme support
+    -   [x] Add "Executive View" features (Budget, Risk, Compliance)
+    -   [x] Update `App.tsx` to pass theme prop
+- [x] Enhance Admin Panel (System Platform) <!-- id: 14 -->
+    -   [x] Refactor `AdminPanel.tsx` for theme support
+    -   [x] Add "System Console" aesthetic (Logs, Controls, Health)
+    -   [x] Update `App.tsx` to pass theme prop
+- [x] Add Resources to About Page <!-- id: 15 -->
+    -   [x] Add "Research & Downloads" section to `About.tsx`
+    -   [x] Simulate White Paper downloads
+- [x] Expand Resources with Real Assets <!-- id: 16 -->
+    -   [x] Fetch sizes for `COMPLIANCE.md`, `DEPLOY.md`, `SDK.py`
+    -   [x] Update `About.tsx` with 6+ authentic items
+- [x] Implement System Notifications <!-- id: 17 -->
+    -   [x] Create `SystemToast` component
+    -   [x] Add `notify()` utility
+    -   [x] Replace `alert()` with `notify()` across all pages
+- [x] Phase 4: Audit & Compliance Overhaul <!-- id: 18 -->
+    -   [x] Refactor `AuditDashboard.tsx` for "Command Center" aesthetic <!-- id: 19 -->
+        -   [x] Add `theme` prop and dynamic styling
+        -   [x] Implement high-density data grids
+        -   [x] Integrate `SystemToast`
+    -   [x] Integrate `AuditDashboard` into `App.tsx` <!-- id: 20 -->
+        -   [x] Add "AUDIT" navigation button
+        -   [x] Add routing logic
+
+- [x] Phase 5: World-Class Landing & Deployment Hub <!-- id: 21 -->
+    -   [x] Upgrade `About.tsx` to "World Class" Landing Page <!-- id: 22 -->
+        -   [x] Implement "Aurora" or "Globe" background animations
+        -   [x] Refine Hero typography and layout
+    -   [x] Implement "Deploy Anywhere" Section <!-- id: 23 -->
+        -   [x] Create Grid of 18 Cloud/Infrastructure Providers
+        -   [x] Add interactive hover states and "Deploy" actions
+        -   [x] Ensure mobile responsiveness
+        -   [ ] Add "AUDIT" navigation button
+        -   [ ] Add routing logic
+
+- [x] Phase 6: Platform Polish & Unification <!-- id: 24 -->
+    -   [x] Implement "Command Palette" (Ctrl+K) <!-- id: 25 -->
+        -   [x] Global keyboard shortcut listener
+        -   [x] Search Actions (Nav, Theme, Export)
+        -   [x] "Spotlight" aesthetic
+    -   [x] Add View Transitions <!-- id: 26 -->
+        -   [x] Smooth cross-fade between active components
+    -   [x] Unified Status Bar <!-- id: 27 -->
+        -   [x] Real-time Clock (UTC)
+        -   [x] Network Latency Indicator
+        -   [x] Active Workspace/Tenant display
+
+- [x] Phase 7: Immersion & Fidelity <!-- id: 28 -->
+    -   [x] Implement "System Boot" Sequence <!-- id: 29 -->
+        -   [x] BIOS-style initialization log on first load
+        -   [x] Typing effect for startup messages
+    -   [x] Add Audio Feedback (SFX) <!-- id: 30 -->
+        -   [x] Subtle clicks for navigation
+        -   [x] "Crunch" sound for deployments/actions
+        -   [x] Global Mute toggle
+    -   [x] Reactive Favicon & Title <!-- id: 31 -->
+        -   [x] Dynamic Title (e.g. "⚠ Alert | Ason")
+        -   [x] Favicon status indicator (Green/Red dot)
+
+- [x] Phase 8: Production Hardening & Optimization <!-- id: 32 -->
+    -   [x] Implement "System Crash" Error Boundary <!-- id: 33 -->
+        -   [x] BSOD-style fallback UI
+        -   [x] "Restart System" action
+    -   [x] Strict Mode Compliance <!-- id: 34 -->
+        -   [x] Resolve remaining TypeScript lint errors
+        -   [x] Enforce no-implicit-any
+    -   [x] Performance Optimization <!-- id: 35 -->
+        -   [x] Code Splitting (Lazy Load Routes)
+        -   [x] Memoize expensive components
+
+- [ ] Phase 9: Security Intelligence & Reporting <!-- id: 36 -->
+    -   [ ] Implement "Threat Intelligence" Module <!-- id: 37 -->
+        -   [ ] Visualization of blocked threats (Map/Globe)
+        -   [ ] Real-time "Intrusion Detection" log
+    -   [ ] Implement "Compliance Reporting" <!-- id: 38 -->
+        -   [ ] "Export PDF" for Audit Logs
+        -   [ ] Print-friendly CSS for reports
+    -   [ ] Integro Connect Resources <!-- id: 39 -->
+        -   [ ] Link "Download SDK" to actual `ason_sdk.py`
+        -   [ ] Link "Deploy Specs" to `DEPLOY_ANYWHERE.md`

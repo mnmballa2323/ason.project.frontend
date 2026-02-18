@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ASON // NETWORK TOPOLOGY</title>
+    <style>
+        body {
+            background: #000;
+            overflow: hidden;
+            margin: 0;
+        }
+
+        canvas {
+            display: block;
+        }
+
+        .hud {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: #00f3ff;
+            font-family: monospace;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="hud">
+        <h1>MESH_TOPOLOGY_V4</h1>
+        <div>NODES_ACTIVE: <span id="node-count">0</span></div>
+        <div>TRAFFIC: <span id="traffic">0</span> TB/s</div>
+    </div>
+    <canvas id="network"></canvas>
+
+    <script>
+        const canvas = document.getElementById('network');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let nodes = [];
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            init();
+        }
+
+        function init() {
+            nodes = [];
+            for (let i = 0; i < 100; i++) {
+                nodes.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    vx: (Math.random() - 0.5) * 2,
+                    vy: (Math.random() - 0.5) * 2
+                });
+            }
+            document.getElementById('node-count').innerText = nodes.length;
+        }
+
+        function draw() {
+            ctx.fillStyle = 'rgba(0,0,0,0.1)';
+            ctx.fillRect(0, 0, width, height);
+
+            ctx.strokeStyle = '#00f3ff';
+            ctx.lineWidth = 0.5;
+            ctx.fillStyle = '#fff';
+
+            // Update
+            nodes.forEach(n => {
+                n.x += n.vx;
+                n.y += n.vy;
+                if (n.x < 0 || n.x > width) n.vx *= -1;
+                if (n.y < 0 || n.y > height) n.vy *= -1;
+
+                ctx.beginPath();
+                ctx.arc(n.x, n.y, 2, 0, Math.PI * 2);
+                ctx.fill();
+            });
+
+            // Connect
+            for (let i = 0; i < nodes.length; i++) {
+                for (let j = i + 1; j < nodes.length; j++) {
+                    const dx = nodes[i].x - nodes[j].x;
+                    const dy = nodes[i].y - nodes[j].y;
+                    const d = Math.sqrt(dx * dx + dy * dy);
+                    if (d < 150) {
+                        ctx.beginPath();
+                        ctx.moveTo(nodes[i].x, nodes[i].y);
+                        ctx.lineTo(nodes[j].x, nodes[j].y);
+                        ctx.globalAlpha = 1 - (d / 150);
+                        ctx.stroke();
+                        ctx.globalAlpha = 1;
+                    }
+                }
+            }
+
+            document.getElementById('traffic').innerText = (Math.random() * 100).toFixed(2);
+            requestAnimationFrame(draw);
+        }
+
+        window.addEventListener('resize', resize);
+        resize();
+        draw();
+    </script>
+</body>
+
+</html>
